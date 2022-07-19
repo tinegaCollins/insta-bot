@@ -32,7 +32,7 @@ var str1 = "https://www.instagram.com/";
       await page.click('button[type="submit"]');
       await page.waitForNavigation();
     } catch (e) {
-      usernamescounter++;
+
       await browser.close();
       console.log("username or password are not valid");
     }
