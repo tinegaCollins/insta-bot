@@ -35,7 +35,6 @@ var str1 = "https://www.instagram.com/";
       usernamescounter++;
       await browser.close();
       console.log("username or password are not valid");
-      continue;
     }
     try {
       await page.goto(str1.concat(targetusernames.usernames[linkcounter]));
