@@ -13,8 +13,6 @@ var cmnt3 = comments.comment[2];
 var comment1 = String(cmnt1);
 var comment2 = String(cmnt2);
 var comment3 = String(cmnt3);
-let commentsArr = [comment1, comment2, comment3];
-console.log(comment1, comment2, comment3);
 var str1 = "https://www.instagram.com/";
 (async () => {
   while (usernamescounter < loginusernames.length) {
@@ -35,39 +33,11 @@ var str1 = "https://www.instagram.com/";
       await page.waitForNavigation();
     } catch (e) {
       usernamescounter++;
-      await browser.close();
       console.log("username or password are not valid");
       continue;
     }
-    for(let j = 0; j < targetusernames.usernames.length; j++){
-      console.log(j,targetusernames.usernames[j]);
-      try {
-        await page.goto(str1.concat(targetusernames.usernames[j]));
-        let post;
-        try {
-          await page.waitForSelector("._aagw", { timeout: 10000 });
-          post = await page.$("._aagw");
-        } catch (error) {
-          await page.waitForSelector("._9AhH0", { timeout: 10000 });
-          post = await page.$("._9AhH0");
-        }
-  
-        if (post) {
-          for (let i = 0; i < 3; i++) {
-            await post.click();
-            await page.waitForSelector("textarea");
-            await page.type("textarea", commentsArr[i]);
-            await page.click('button[type="submit"]');
-            await page.waitForTimeout(10000);
-            console.log(loginusernames[usernamescounter]);
-            console.log(str1.concat(targetusernames.usernames[j]));
-          }
-        } else {
-          console.log("No Post");
-        }
-      } catch (e) {
-        console.log("No Post");
-      }
+    for (let j = 0; j < targetusernames.usernames.length; j++) {
+      console.log(j, targetusernames.usernames[j], targetusernames.usernames.length);
       try {
         await page.goto(str1.concat(targetusernames.usernames[j]));
   
@@ -81,20 +51,20 @@ var str1 = "https://www.instagram.com/";
         }
   
         if (post) {
-          for (let i = 0; i < 3; i++) {
-            await post.click();
-            await page.waitForSelector("textarea");
-            await page.type("textarea", commentsArr[i]);
-            await page.click('button[type="submit"]');
-            await page.waitForTimeout(10000);
-            console.log(loginusernames[usernamescounter]);
-            console.log(str1.concat(targetusernames.usernames[j]));
-          }
+          await post.click();
+          await page.waitForSelector("textarea");
+          await page.type("textarea", comment1);
+          await page.click('button[type="submit"]');
+          await page.waitForTimeout(10000);
+          console.log(loginusernames[usernamescounter]);
+          console.log(str1.concat(targetusernames.usernames[j]));
         } else {
           console.log("No Post");
+          continue;
         }
       } catch (e) {
         console.log("No Post");
+        continue;
       }
       linkcounter++;
   
@@ -111,20 +81,50 @@ var str1 = "https://www.instagram.com/";
         }
   
         if (post) {
-          for (let i = 0; i < 3; i++) {
-            await post.click();
-            await page.waitForSelector("textarea");
-            await page.type("textarea", commentsArr[i]);
-            await page.click('button[type="submit"]');
-            await page.waitForTimeout(10000);
-            console.log(loginusernames[usernamescounter]);
-            console.log(str1.concat(targetusernames.usernames[j]));
-          }
+          await post.click();
+          await page.waitForSelector("textarea");
+          await page.type("textarea", comment2);
+          await page.click('button[type="submit"]');
+          await page.waitForTimeout(10000);
+          console.log(loginusernames[usernamescounter]);
+          console.log(str1.concat(targetusernames.usernames[j]));
         } else {
           console.log("No Post");
+          continue;
         }
       } catch (e) {
         console.log("No Post");
+        continue;
+      }
+      linkcounter++;
+  
+      try {
+        await page.goto(str1.concat(targetusernames.usernames[j]));
+  
+        let post;
+        try {
+          await page.waitForSelector("._aagw", { timeout: 10000 });
+          post = await page.$("._aagw");
+        } catch (error) {
+          await page.waitForSelector("._9AhH0", { timeout: 10000 });
+          post = await page.$("._9AhH0");
+        }
+  
+        if (post) {
+          await post.click();
+          await page.waitForSelector("textarea");
+          await page.type("textarea", comment3);
+          await page.click('button[type="submit"]');
+          await page.waitForTimeout(10000);
+          console.log(loginusernames[usernamescounter]);
+          console.log(str1.concat(targetusernames.usernames[j]));
+        } else {
+          console.log("No Post");
+          continue;
+        }
+      } catch (e) {
+        console.log("No Post");
+        continue;
       }
     }
     usernamescounter++;
