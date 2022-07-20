@@ -59,8 +59,9 @@ var linkcounter = 0;
           j++;
           counter ++;
           linkcounter++;
+          console.log(loginusernames[usernamescounter]);
           console.log(str1.concat(targetusernames.usernames[linkcounter]));
-          console.log(`comments made: ${counter}`);
+          console.log(counter);
         } else {
           linkcounter++
           console.log("No Post");
