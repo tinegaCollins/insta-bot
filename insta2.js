@@ -37,7 +37,6 @@ var str1 = "https://www.instagram.com/";
       continue;
     }
     for (let j = 0; j < targetusernames.usernames.length; j++) {
-      console.log(j, targetusernames.usernames[j], targetusernames.usernames.length);
       try {
         await page.goto(str1.concat(targetusernames.usernames[j]));
   
@@ -58,6 +57,8 @@ var str1 = "https://www.instagram.com/";
           await page.waitForTimeout(10000);
           console.log(loginusernames[usernamescounter]);
           console.log(str1.concat(targetusernames.usernames[j]));
+          counter ++;
+          console.log(`comments made: ${counter}`);
         } else {
           console.log("No Post");
           continue;
@@ -68,64 +69,64 @@ var str1 = "https://www.instagram.com/";
       }
       linkcounter++;
   
-      try {
-        await page.goto(str1.concat(targetusernames.usernames[j]));
+      // try {
+      //   await page.goto(str1.concat(targetusernames.usernames[j]));
   
-        let post;
-        try {
-          await page.waitForSelector("._aagw", { timeout: 10000 });
-          post = await page.$("._aagw");
-        } catch (error) {
-          await page.waitForSelector("._9AhH0", { timeout: 10000 });
-          post = await page.$("._9AhH0");
-        }
+      //   let post;
+      //   try {
+      //     await page.waitForSelector("._aagw", { timeout: 10000 });
+      //     post = await page.$("._aagw");
+      //   } catch (error) {
+      //     await page.waitForSelector("._9AhH0", { timeout: 10000 });
+      //     post = await page.$("._9AhH0");
+      //   }
   
-        if (post) {
-          await post.click();
-          await page.waitForSelector("textarea");
-          await page.type("textarea", comment2);
-          await page.click('button[type="submit"]');
-          await page.waitForTimeout(10000);
-          console.log(loginusernames[usernamescounter]);
-          console.log(str1.concat(targetusernames.usernames[j]));
-        } else {
-          console.log("No Post");
-          continue;
-        }
-      } catch (e) {
-        console.log("No Post");
-        continue;
-      }
-      linkcounter++;
+      //   if (post) {
+      //     await post.click();
+      //     await page.waitForSelector("textarea");
+      //     await page.type("textarea", comment2);
+      //     await page.click('button[type="submit"]');
+      //     await page.waitForTimeout(10000);
+      //     console.log(loginusernames[usernamescounter]);
+      //     console.log(str1.concat(targetusernames.usernames[j]));
+      //   } else {
+      //     console.log("No Post");
+      //     continue;
+      //   }
+      // } catch (e) {
+      //   console.log("No Post");
+      //   continue;
+      // }
+      // linkcounter++;
   
-      try {
-        await page.goto(str1.concat(targetusernames.usernames[j]));
+      // try {
+      //   await page.goto(str1.concat(targetusernames.usernames[j]));
   
-        let post;
-        try {
-          await page.waitForSelector("._aagw", { timeout: 10000 });
-          post = await page.$("._aagw");
-        } catch (error) {
-          await page.waitForSelector("._9AhH0", { timeout: 10000 });
-          post = await page.$("._9AhH0");
-        }
+      //   let post;
+      //   try {
+      //     await page.waitForSelector("._aagw", { timeout: 10000 });
+      //     post = await page.$("._aagw");
+      //   } catch (error) {
+      //     await page.waitForSelector("._9AhH0", { timeout: 10000 });
+      //     post = await page.$("._9AhH0");
+      //   }
   
-        if (post) {
-          await post.click();
-          await page.waitForSelector("textarea");
-          await page.type("textarea", comment3);
-          await page.click('button[type="submit"]');
-          await page.waitForTimeout(10000);
-          console.log(loginusernames[usernamescounter]);
-          console.log(str1.concat(targetusernames.usernames[j]));
-        } else {
-          console.log("No Post");
-          continue;
-        }
-      } catch (e) {
-        console.log("No Post");
-        continue;
-      }
+      //   if (post) {
+      //     await post.click();
+      //     await page.waitForSelector("textarea");
+      //     await page.type("textarea", comment3);
+      //     await page.click('button[type="submit"]');
+      //     await page.waitForTimeout(10000);
+      //     console.log(loginusernames[usernamescounter]);
+      //     console.log(str1.concat(targetusernames.usernames[j]));
+      //   } else {
+      //     console.log("No Post");
+      //     continue;
+      //   }
+      // } catch (e) {
+      //   console.log("No Post");
+      //   continue;
+      // }
     }
     usernamescounter++;
     await browser.close();
