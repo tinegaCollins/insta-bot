@@ -12,7 +12,7 @@ var cmnt3 = comments.comment[2];
 var comment1 = String(cmnt1);
 var comment2 = String(cmnt2);
 var comment3 = String(cmnt3);
-let comments = [comment1,comment2, comment3];
+let commentsArr = [comment1,comment2, comment3];
 var str1 = "https://www.instagram.com/";
 var linkcounter = 0;
 (async () => {
@@ -55,7 +55,7 @@ var linkcounter = 0;
           await post.click();
           await page.waitForSelector("textarea");
           let randomnumber = Math.floor(Math.random() * 3);
-          await page.type("textarea", comments[randomnumber]);
+          await page.type("textarea", commentsArr[randomnumber]);
           await page.click('button[type="submit"]');
           await page.waitForTimeout(10000);
           j++;
